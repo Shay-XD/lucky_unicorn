@@ -5,6 +5,7 @@ balance = 5
 
 rounds_played = 0
 
+
 play_again = input("Press <enter> to play. . .").lower()
 while play_again == "":
 
@@ -33,8 +34,28 @@ while play_again == "":
     # The token is either a horse or zebra...
     # in both cases, subtract $0.50 from the balance
     else:
+        # if the number is even, set the chosen
+        # item to a horse
         if chosen_num % 2 == 0:
             chosen = "horse"
+
+        # otherwise set it to a zebra
         else:
             chosen = "zebra"
         balance -= 0.5
+
+    print("you got a {}. Your balance is ${:.2f}".format(chosen, balance))
+
+
+
+    if balance < 1:
+        # If balance is to low, exit the game and
+        # output a suitable message
+        play_again = "xxx"
+        print("sorry you have run out of money")
+    else:
+        play_again = input("Press enter to play again or 'xxx' to quit")
+
+
+print()
+print("Final balance", balance)
